@@ -1,0 +1,27 @@
+.container-cover {
+  width: 100%;
+  /* min-width: 1200px; */
+  min-height: 100vh;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+  /* background: tomato; */
+  background: #fffdf9;
+}
+
+.container-content {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+  width: 100%;
+  /* background: yellowgreen; */
+}
+
+@media screen and (max-width: 800px) {
+  .container-content {
+    margin-top: 50px;
+  }
+}

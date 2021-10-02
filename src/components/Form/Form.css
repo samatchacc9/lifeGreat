@@ -1,0 +1,139 @@
+/* scale form */
+.form-scope {
+  width: 700px;
+  background: #ffffff;
+  border-radius: 5px;
+  margin: 15px 0px;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+/* header form */
+.form-scope header {
+  text-align: center;
+  color: #393e46;
+  font-size: 24px;
+  font-weight: 600;
+  border-bottom: 1px solid #bfbfbf;
+}
+.form-scope .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #393e46;
+}
+.form-scope form {
+  margin: 0px 25px;
+}
+form .dbl-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.dbl-field .field {
+  height: 40px;
+  position: relative; /* ใส่คลุม absolute*/
+  width: calc(100% / 2 - 13px);
+}
+/* ขนาด input ภายใน ให้ยืดกว่าง*/
+form .field input,
+form .field select,
+form .field select option {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 0 18px 0 48px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  font-size: 16px;
+}
+/* placeholder input */
+form .field input::placeholder {
+  color: #bfbfbf;
+}
+/* placeholder  select */
+select:required:invalid {
+  color: #bfbfbf;
+}
+option[value=''][disabled] {
+  display: none;
+}
+option {
+  color: #393e46;
+}
+
+form .field input:focus,
+form .field select:focus {
+  border: 2px solid #a4ebf3;
+}
+.form-scope form i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #bfbfbf;
+  font-size: 17px;
+  pointer-events: none; /*ทำให้ div click ไม่ได้*/
+  transform: translateY(-50%);
+}
+/* focus ไปที่ tag i ทุกตัว ให้มีสี  #0d6efd */
+form .field input:focus ~ i {
+  color: #a4ebf3;
+}
+
+#myfile {
+  /* position: relative; */
+  padding: 0;
+}
+
+.upload-box {
+  /* font-size: 16px; */
+  background: white;
+  /* border-radius: 50px; */
+  /* box-shadow: 5px 5px 10px black; */
+  /* width: 350px; */
+  outline: none;
+  /* padding: 0; */
+}
+
+::-webkit-file-upload-button {
+  color: #fff;
+  background: rgb(211, 207, 207);
+  padding: 13px;
+  border: none;
+  border-radius: 0px;
+  /* box-shadow: 1px 0 1px 1px #6b4559; */
+  outline: none;
+}
+
+form .button-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.form-footer {
+  padding-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .form-scope header {
+    text-align: center;
+  }
+  form .dbl-field {
+    flex-direction: column;
+  }
+  .dbl-field .field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  form .button-area {
+    flex-direction: column;
+  }
+  .button-area button {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+}
