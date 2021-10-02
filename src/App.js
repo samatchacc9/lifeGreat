@@ -5,6 +5,11 @@ import Footer from './components/Footer/Footer';
 
 import ContainerCover from './components/Container/ContainerCover';
 import CustomerRegister from './pages/CustomerRegister';
+import CustomerLogin from './pages/CustomerLogin';
+import Home from './pages/Home';
+import CustomerProduct from './pages/CustomerProduct';
+import CustomerProductDetail from './pages/CustomerProductDetail';
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,8 +21,12 @@ function App() {
       <Route path='/login' exact component={Login} />
       <Route path='/register' exact component={Register} /> */}
           {/* <CustomerOrder /> */}
-          <CustomerRegister />
-          {/* Customer */}
+          {/* <Home /> */}
+          {/* <CustomerLogin /> */}
+          {/* <CustomerRegister /> */}
+
+          {/* <CustomerProduct /> */}
+          {/* <CustomerProductDetail /> */}
         </Switch>
       </ContainerCover>
       <Footer />

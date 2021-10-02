@@ -1,0 +1,46 @@
+.image-detail-circle img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card-frame-hz {
+  background-color: #a4ebf35d;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #a4ebf3;
+  padding: 15px;
+}
+
+.card-product-detail-body {
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.card-part1-hz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+}
+.text-detail {
+  padding: 0 10px 0 0px;
+}
+.card-part2-hz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .card-product-detail-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .text-detail {
+    padding-bottom: 20px;
+  }
+}

@@ -1,0 +1,32 @@
+/* หัวข้อ */
+.topic {
+  width: 100%;
+  /* margin-top: 95px; */
+  margin-bottom: 10px;
+}
+.topic h1 {
+  text-align: center;
+  font-size: 25px;
+  color: #393e46;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* ใส้ใต้หัวข้อ */
+.topic h1::after {
+  content: '';
+  height: 2px;
+  width: 140px;
+  background-color: #393e46;
+  border-radius: 5px;
+  display: block;
+  margin: auto;
+  /* margin-bottom: 5px; */
+}
+
+@media (max-width: 800px) {
+  .topic {
+    margin-top: 20px;
+  }
+}

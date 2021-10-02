@@ -6,7 +6,7 @@ function FormRegister() {
   return (
     // <div className='container-cover'>
     //   <div className='container-content'>
-    <div className='form-scope'>
+    <div className='form-scope width-700'>
       <header>ลงทะเบียน</header>
       <form action='#'>
         <div className='title'>ข้อมูลส่วนตัว</div>
@@ -112,11 +112,11 @@ function FormRegister() {
         <div className='form-footer'>
           <div className='button-area'>
             <button type='reset' className='orange'>
-              Clear
+              reset
             </button>
 
             <button type='submit' className='green'>
-              Save
+              save
             </button>
           </div>
         </div>

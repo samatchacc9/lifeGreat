@@ -6,7 +6,6 @@
   margin: 15px 0px;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
 }
-
 /* header form */
 .form-scope header {
   text-align: center;
@@ -27,16 +26,31 @@
 .form-scope form {
   margin: 0px 25px;
 }
-form .dbl-field {
+form .one-field {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  /* align-items: center;
+  justify-content: space-between; */
+  flex-direction: column;
   margin-bottom: 10px;
 }
-.dbl-field .field {
-  height: 40px;
+
+.form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #393e46;
+}
+.form-body {
+  margin: 15px 0px;
+}
+.one-field .field {
+  height: 50px;
   position: relative; /* ใส่คลุม absolute*/
-  width: calc(100% / 2 - 13px);
+  width: calc(100% / 1 - 13px);
+  margin-bottom: 20px;
 }
 /* ขนาด input ภายใน ให้ยืดกว่าง*/
 form .field input,
@@ -122,19 +136,15 @@ form .button-area {
   .form-scope header {
     text-align: center;
   }
-  form .dbl-field {
+  form .one-field {
     flex-direction: column;
   }
-  .dbl-field .field {
+  .one-field .field {
     width: 100%;
     margin-bottom: 20px;
   }
 
   form .button-area {
     flex-direction: column;
-  }
-  .button-area button {
-    width: 100%;
-    margin: 10px 0 0 0;
   }
 }
