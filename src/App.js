@@ -9,7 +9,7 @@ import CustomerLogin from './pages/CustomerLogin';
 import Home from './pages/Home';
 import CustomerProduct from './pages/CustomerProduct';
 import CustomerProductDetail from './pages/CustomerProductDetail';
-
+import CartOrder from './components/Card/CardORder';
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +27,7 @@ function App() {
 
           {/* <CustomerProduct /> */}
           {/* <CustomerProductDetail /> */}
+          <CartOrder />
         </Switch>
       </ContainerCover>
       <Footer />

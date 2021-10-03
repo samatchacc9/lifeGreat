@@ -1,11 +1,12 @@
 import React from 'react';
 import './Form.css';
 import './FormOneline.css';
+import './FormLogin.css';
 import '../Container/ContainerCover.css';
-
+import '../../App.css';
 function FormLogin() {
   return (
-    <div className='form-scope width-500'>
+    <div className='form-scope width-500 responsive'>
       <div className='form-header'>เข้าสู่ระบบ</div>
       <form action='#'>
         <div className='form-body'>
