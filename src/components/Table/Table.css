@@ -15,10 +15,9 @@
 
 /* button style */
 
-.button-create {
-  padding: 5px 15px;
+.button-table {
+  padding: 5px 20px;
   border-radius: 5px;
-  border: 1px solid #ccc;
   color: black;
 }
 
@@ -80,7 +79,7 @@ table caption {
 }
 
 table tr {
-  background-color: #f8f8f8;
+  background-color: #fffdf9;
   border: 1px solid #ddd;
   padding: 0.35em;
 }
@@ -145,7 +144,6 @@ table th {
     float: left;
     font-weight: bold;
     text-transform: uppercase;
-    background-color: #a4ebf3;
   }
 
   table td:last-child {

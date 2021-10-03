@@ -21,30 +21,30 @@ function TableOrderForCustomer() {
         </thead>
         <tbody>
           <tr>
-            <td data-label='No.'>1.</td>
-            <td data-label='Order date'>20-10-2021</td>
-            <td data-label='Payment status'>
+            <td data-label='ลำดับ'>1.</td>
+            <td data-label='วันที่สั่ง'>20-10-2021</td>
+            <td data-label='สถานะการชำระเงิน'>
               <font className='pending'> pending </font>
             </td>
-            <td data-label='Summary'>-</td>
-            <td data-label='Summary'>800฿</td>
-            <td data-label='Detail'>
-              <a href='#' className='button-create blue'>
+            <td data-label='เลขพัสดุ'>-</td>
+            <td data-label='ยอดรวม'>800฿</td>
+            <td data-label='รายละเอียด'>
+              <a href='#' className='button-table blue'>
                 <i className='fas fa-eye'></i>
               </a>
             </td>
           </tr>
 
           <tr>
-            <td data-label='No.'>2.</td>
-            <td data-label='Order date'>20-10-2021</td>
-            <td data-label='Payment status'>
+            <td data-label='ลำดับ'>2.</td>
+            <td data-label='วันที่สั่ง'>20-10-2021</td>
+            <td data-label='สถานะการชำระเงิน'>
               <font className='completed'> completed </font>
             </td>
-            <td data-label='Summary'>114-5678-93</td>
-            <td data-label='Summary'>600฿</td>
-            <td data-label='Detail'>
-              <a href='#' className='button-create blue'>
+            <td data-label='เลขพัสดุ'>114-5678-93</td>
+            <td data-label='ยอดรวม'>600฿</td>
+            <td data-label='รายละเอียด'>
+              <a href='#' className='button-table blue'>
                 <i className='fas fa-eye'></i>
               </a>
             </td>

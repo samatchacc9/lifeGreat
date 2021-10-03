@@ -24,23 +24,22 @@ function App() {
       <Navbar />
 
       <Switch>
-        <ContainerCover>
-          {/* <Home /> */}
-          {/* <Login /> */}
-          {/* <CustomerRegister /> */}
-          {/* <CustomerProduct /> */}
-          {/* <CustomerProductDetail /> */}
-          {/* <CustomerCart /> */}
-          {/* <CustomerPayment /> */}
-          {/* <CustomerOrder /> */}
-          {/* <CustomerProfile /> */}
-          <FormCustomerUpdateProfile />
-        </ContainerCover>
-
-        {/* <ContainerStart> */}
+        {/* <ContainerCover> */}
+        {/* <Home /> */}
+        {/* <Login /> */}
+        {/* <CustomerRegister /> */}
+        {/* <CustomerProduct /> */}
+        {/* <CustomerProductDetail /> */}
+        {/* <CustomerCart /> */}
+        {/* <CustomerPayment /> */}
         {/* <CustomerOrder /> */}
+        {/* <CustomerProfile /> */}
+        {/* <FormCustomerUpdateProfile /> */}
+        {/* </ContainerCover> */}
 
-        {/* </ContainerStart> */}
+        {/* <ContainerStart>
+          <CustomerOrder />
+        </ContainerStart> */}
       </Switch>
 
       <Footer />
