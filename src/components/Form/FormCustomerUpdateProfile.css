@@ -1,0 +1,11 @@
+.image-form {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.image-form img {
+  object-fit: cover;
+  width: 130px;
+  height: 125px;
+  border-radius: 8px;
+}

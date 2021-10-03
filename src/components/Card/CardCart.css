@@ -2,6 +2,7 @@
   display: flex;
 }
 .product-order-header {
+  padding-top: 10px;
   font-size: 20px;
   font-weight: 600;
   text-align: center;
@@ -183,11 +184,6 @@
     justify-content: space-between;
   } */
 
-@media screen and (max-width: 400px) {
-  .remove {
-    display: none;
-  }
-}
 @media screen and (max-width: 700px) {
   .product {
     width: 100%;
@@ -240,7 +236,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   .cart {
     flex-direction: column;
   }
@@ -254,5 +250,6 @@
   .cart-total {
     margin-left: 0;
     margin-top: 10px;
+    margin-bottom: 15px;
   }
 }

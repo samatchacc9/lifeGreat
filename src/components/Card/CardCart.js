@@ -1,7 +1,7 @@
 import React from 'react';
-import './CardOrder.css';
+import './CardCart.css';
 
-function CardORder() {
+function CardCart() {
   return (
     <>
       <div className='cart'>
@@ -92,4 +92,4 @@ function CardORder() {
   );
 }
 
-export default CardORder;
+export default CardCart;

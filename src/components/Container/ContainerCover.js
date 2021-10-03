@@ -5,6 +5,7 @@ function ContainerCover({ children }) {
     <>
       <div className='container-cover'>
         <div className='container-content'>{children}</div>
+        {/* <div className='container-start'>{children}</div> */}
       </div>
     </>
   );

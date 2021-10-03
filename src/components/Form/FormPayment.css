@@ -1,0 +1,47 @@
+/*  */
+.summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px 0px;
+  border-bottom: 2px dashed #eeeeee;
+}
+.bank {
+  /* border: 1px solid #000000; */
+  margin: 5px 0px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-bottom: 2px dashed #eeeeee;
+  margin-bottom: 10px;
+}
+
+.summary-text h3,
+.summary-price h3 {
+  font-weight: 500;
+}
+.summary-text h3,
+.bank-detail h4 {
+  color: #393e46;
+}
+.summary-price h3,
+.bank-detail {
+  color: #585757;
+}
+
+.summary-price,
+.bank-title h3,
+.bank-detail h4 {
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .summary {
+    display: flex;
+    flex-direction: column;
+  }
+  .bank {
+    display: flex;
+    flex-direction: column;
+  }
+}

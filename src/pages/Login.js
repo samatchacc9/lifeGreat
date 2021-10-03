@@ -1,8 +1,8 @@
 import React from 'react';
 import FormLogin from '../components/Form/FormLogin';
 
-function CustomerLogin() {
+function Login() {
   return <FormLogin />;
 }
 
-export default CustomerLogin;
+export default Login;

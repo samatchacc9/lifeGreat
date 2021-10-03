@@ -1,4 +1,5 @@
 .container-cover {
+  /* margin-top: 75px; */
   width: 100%;
   /* min-width: 1200px; */
   min-height: 100vh;
@@ -6,6 +7,19 @@
   padding-top: 10px;
   justify-content: center;
   align-items: center;
+  /* background: tomato; */
+  background: #fffdf9;
+}
+
+.container-start {
+  margin-top: 75px;
+  width: 100%;
+  /* min-width: 1200px; */
+  min-height: 100vh;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: flex-start;
   /* background: tomato; */
   background: #fffdf9;
 }
@@ -20,8 +34,18 @@
   /* background: yellowgreen; */
 }
 
+.container-content-start {
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* background: yellowgreen; */
+}
+
+/* 
 @media screen and (max-width: 800px) {
   .container-content {
-    /* margin-top: 50px; */
+    margin-top: 50px;
   }
-}
+} */

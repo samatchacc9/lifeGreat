@@ -14,7 +14,7 @@
 
 .card-product-detail-body {
   display: flex;
-  /* justify-content: space-around; */
+  justify-content: space-around;
 }
 
 .card-part1-hz {
