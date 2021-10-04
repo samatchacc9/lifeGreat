@@ -1,0 +1,74 @@
+.form-width {
+  width: 800px;
+}
+.mrg-btt {
+  margin-bottom: 15px;
+}
+
+.frame-search-data {
+  /* width: 720px; */
+  /* background: #ffffff; */
+  /* border-radius: 5px; */
+  margin: 15px 0px;
+  /* border: #9d9e9e 1px solid; */
+}
+/* header form */
+.frame-search-data header {
+  text-align: center;
+  /* font-size: 24px; */
+  font-weight: 600;
+  padding: 0 0 10px;
+  /* border-bottom: 1px solid #bfbfbf; */
+}
+
+.frame-search-data form {
+  margin: 0px 25px;
+}
+
+form .field-col4 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.field-col4 .field {
+  height: 40px;
+  position: relative; /* ใส่คลุม absolute*/
+  width: calc(100% / 4 - 13px);
+}
+
+.form-all .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #393e46;
+}
+.form-all form {
+  margin: 0px 25px;
+}
+
+.frame-search-data form i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #bfbfbf;
+  font-size: 17px;
+  pointer-events: none; /*ทำให้ div click ไม่ได้*/
+  transform: translateY(-50%);
+}
+
+@media (max-width: 600px) {
+  .frame-search-data header {
+    text-align: center;
+  }
+  form .field-col4 {
+    flex-direction: column;
+  }
+  .field-col4 .field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

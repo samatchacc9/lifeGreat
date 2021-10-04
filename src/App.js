@@ -17,6 +17,9 @@ import CustomerOrderDetail from './pages/CustomerOrderDetail';
 import CustomerOrder from './pages/CustomerOrder';
 import CustomerProfile from './pages/CustomerProfile';
 import FormCustomerUpdateProfile from './components/Form/FormCustomerUpdateProfile';
+import AdminManageOrder from './pages/AdminManageOrder';
+import SearchOrderForAdmin from './components/Searchbar/SearchOrderForAdmin';
+import AdminManageProduct from './pages/AdminManageProduct';
 
 function App() {
   return (
@@ -24,18 +27,20 @@ function App() {
       <Navbar />
 
       <Switch>
-        {/* <ContainerCover> */}
-        {/* <Home /> */}
-        {/* <Login /> */}
-        {/* <CustomerRegister /> */}
-        {/* <CustomerProduct /> */}
-        {/* <CustomerProductDetail /> */}
-        {/* <CustomerCart /> */}
-        {/* <CustomerPayment /> */}
-        {/* <CustomerOrder /> */}
-        {/* <CustomerProfile /> */}
-        {/* <FormCustomerUpdateProfile /> */}
-        {/* </ContainerCover> */}
+        <ContainerCover>
+          {/* <Home /> */}
+          {/* <Login /> */}
+          {/* <CustomerRegister /> */}
+          {/* <CustomerProduct /> */}
+          {/* <CustomerProductDetail /> */}
+          {/* <CustomerCart /> */}
+          {/* <CustomerPayment /> */}
+          {/* <CustomerOrder /> */}
+          {/* <CustomerProfile /> */}
+          {/* <FormCustomerUpdateProfile /> */}
+          {/* <AdminManageOrder /> */}
+          <AdminManageProduct />
+        </ContainerCover>
 
         {/* <ContainerStart>
           <CustomerOrder />

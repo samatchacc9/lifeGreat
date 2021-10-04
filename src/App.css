@@ -54,3 +54,7 @@
 .width-950 {
   max-width: 950px;
 }
+
+.width-950-fix {
+  width: 950px;
+}

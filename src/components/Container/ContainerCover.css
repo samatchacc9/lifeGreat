@@ -43,6 +43,13 @@
   /* background: yellowgreen; */
 }
 
+.container-search {
+  display: flex;
+  /* padding: 0 10px; */
+  justify-content: center;
+  align-items: center;
+}
+
 /* 
 @media screen and (max-width: 800px) {
   .container-content {

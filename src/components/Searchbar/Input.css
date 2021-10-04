@@ -1,0 +1,8 @@
+.control-form {
+  /* margin-top: 70px;
+    min-height: 80vh; */
+  display: flex;
+  padding: 0 10px;
+  justify-content: center;
+  align-items: center;
+}
