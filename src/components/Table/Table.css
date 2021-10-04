@@ -15,6 +15,31 @@
 
 /* button style */
 
+/* .left {
+  display: flex;
+  justify-content: start;
+} */
+.btnAdd {
+  display: flex;
+  justify-content: flex-start;
+}
+.btn button {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 5px;
+}
+.btnAdd button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  background: #71efa3;
+}
+.btnAdd button:hover {
+  background: #71efa3c4;
+}
+
 .button-table {
   padding: 5px 20px;
   border-radius: 5px;
@@ -84,7 +109,7 @@ table tr {
   padding: 0.35em;
 }
 
-img {
+td img {
   object-fit: cover;
   width: 100px;
   height: 100px;

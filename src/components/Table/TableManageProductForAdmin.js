@@ -1,13 +1,24 @@
 import React from 'react';
 import './Table.css';
+import '../../components/Container/ContainerStartColumn.css';
+
 function TableManageProductForAdmin() {
   return (
     <>
-      <div style={{ marginBottom: '10px' }}>
+      {/* <div style={{ marginBottom: '10px' }}>
         <a href='#' className='button-create ' style={{ background: 'rgba(61, 240, 61, 0.884)' }}>
           <i class='fas fa-plus-square'></i>
         </a>
+      </div> */}
+      {/* <div className='container-start-column'> */}
+
+      <div className='btnAdd '>
+        <button>
+          <i class='fas fa-plus'></i> เพิ่มสินค้า
+        </button>
       </div>
+
+      {/* <div className='container-start-column'> */}
       <table>
         {/* <caption>Order Detail</caption> */}
         <thead>
@@ -34,12 +45,12 @@ function TableManageProductForAdmin() {
             </td>
             <td data-label='Product Detail'>Vitamin c 500 mlg</td>
             <td data-label='Edit'>
-              <a href='#' className='button-create blue'>
+              <a href='#' className='button-table blue'>
                 <i class='fas fa-wrench'></i>
               </a>
             </td>
             <td data-label='Cancle'>
-              <a href='#' className='button-create red'>
+              <a href='#' className='button-table red'>
                 <i className='fas fa-window-close'></i>
               </a>
             </td>
@@ -57,18 +68,19 @@ function TableManageProductForAdmin() {
             </td>
             <td data-label='Product Detail'>Vitamin c 500 mlg</td>
             <td data-label='Edit'>
-              <a href='#' className='button-create blue'>
+              <a href='#' className='button-table blue'>
                 <i class='fas fa-wrench'></i>
               </a>
             </td>
             <td data-label='Cancle'>
-              <a href='#' className='button-create red'>
+              <a href='#' className='button-table red'>
                 <i className='fas fa-window-close'></i>
               </a>
             </td>
           </tr>
         </tbody>
       </table>
+      {/* </div> */}
     </>
   );
 }

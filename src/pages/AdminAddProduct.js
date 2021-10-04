@@ -1,7 +1,8 @@
 import React from 'react';
+import FormAddProduct from '../components/Form/FormAddProduct';
 
 function AdminAddProduct() {
-  return <div></div>;
+  return <FormAddProduct />;
 }
 
 export default AdminAddProduct;

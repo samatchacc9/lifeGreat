@@ -1,0 +1,9 @@
+.image-form-update-order {
+  text-align: center;
+  margin: 10px 0 10px;
+}
+.image-form-update-order img {
+  object-fit: cover;
+  width: 310px;
+  height: 310px;
+}

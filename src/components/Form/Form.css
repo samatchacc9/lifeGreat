@@ -40,6 +40,7 @@ form .dbl-field {
 }
 /* ขนาด input ภายใน ให้ยืดกว่าง*/
 form .field input,
+form .field textarea,
 form .field select,
 form .field select option {
   height: 100%;
@@ -51,7 +52,9 @@ form .field select option {
   font-size: 16px;
 }
 /* placeholder input */
-form .field input::placeholder {
+form .field input,
+form .field textarea,
+form .field select::placeholder {
   color: #bfbfbf;
 }
 /* placeholder  select */
@@ -66,7 +69,8 @@ option {
 }
 
 form .field input:focus,
-form .field select:focus {
+form .field select:focus,
+form .field textarea:focus {
   border: 2px solid #a4ebf3;
 }
 .form-scope form i {

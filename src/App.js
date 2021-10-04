@@ -20,6 +20,12 @@ import FormCustomerUpdateProfile from './components/Form/FormCustomerUpdateProfi
 import AdminManageOrder from './pages/AdminManageOrder';
 import SearchOrderForAdmin from './components/Searchbar/SearchOrderForAdmin';
 import AdminManageProduct from './pages/AdminManageProduct';
+import AdminManageCategory from './pages/AdminManageCategory';
+import AdminAddCategory from './pages/AdminAddCategory';
+import AdminUpdateCategory from './pages/AdminUpdateCategory';
+import AdminAddProduct from './pages/AdminAddProduct';
+import AdminUpdateProduct from './pages/AdminUpdateProduct';
+import AdminUpdateOrder from './pages/AdminUpdateOrder';
 
 function App() {
   return (
@@ -39,7 +45,13 @@ function App() {
           {/* <CustomerProfile /> */}
           {/* <FormCustomerUpdateProfile /> */}
           {/* <AdminManageOrder /> */}
-          <AdminManageProduct />
+          {/* <AdminManageProduct /> */}
+          {/* <AdminManageCategory /> */}
+          {/* <AdminAddCategory /> */}
+          {/* <AdminUpdateCategory /> */}
+          {/* <AdminAddProduct /> */}
+          {/* <AdminUpdateProduct /> */}
+          {/* <AdminUpdateOrder /> */}
         </ContainerCover>
 
         {/* <ContainerStart>
