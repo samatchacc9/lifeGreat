@@ -2,8 +2,15 @@ import React from 'react';
 import Topic from '../Topic/Topic';
 import './Table.css';
 import '../Container/ContainerStartColumn.css';
+import { useHistory } from 'react-router-dom';
 
 function TableOrderForCustomer() {
+  const history = useHistory();
+
+  const handleDetailOrder = () => {
+    history.push('/CustomerOrderDetail');
+  };
+
   return (
     // <div className='container-start-column'>
     <table>
@@ -31,7 +38,7 @@ function TableOrderForCustomer() {
           <td data-label='เลขพัสดุ'>-</td>
           <td data-label='รายละเอียด'>
             <a href='#' className='button-table blue'>
-              <i className='fas fa-eye'></i>
+              <i className='fas fa-eye' onClick={handleDetailOrder}></i>
             </a>
           </td>
         </tr>

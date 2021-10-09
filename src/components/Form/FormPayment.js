@@ -1,7 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import './FormPayment.css';
 
 function FormPayment() {
+  const history = useHistory();
+
+  const handleClickPayment = () => {
+    history.push('/CustomerOrder');
+  };
   return (
     <div className='form-scope width-700'>
       <header>ชำระเงิน</header>
@@ -58,7 +64,7 @@ function FormPayment() {
               reset
             </button>
 
-            <button type='submit' className='green'>
+            <button type='submit' className='green' onClick={handleClickPayment}>
               save
             </button>
           </div>

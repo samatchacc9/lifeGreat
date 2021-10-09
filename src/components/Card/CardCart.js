@@ -1,7 +1,14 @@
 import React from 'react';
 import './CardCart.css';
+import { useHistory } from 'react-router-dom';
 
 function CardCart() {
+  const history = useHistory();
+
+  const handlepayment = () => {
+    history.push('/CustomerPayment');
+  };
+
   return (
     <>
       <div className='cart'>
@@ -85,7 +92,9 @@ function CardCart() {
             จำนวน :<span>2</span>
           </p>
 
-          <a href='#'>ชำระเงิน</a>
+          <a href='#' onClick={handlepayment}>
+            ชำระเงิน
+          </a>
         </div>
       </div>
     </>

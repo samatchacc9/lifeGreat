@@ -2,8 +2,15 @@ import React from 'react';
 import Topic from '../Topic/Topic';
 import './Table.css';
 import '../Container/ContainerStartColumn.css';
+import { useHistory } from 'react-router-dom';
 
 function TableManageOrderForAdmin() {
+  const history = useHistory();
+
+  const handleClickUpdate = () => {
+    history.push('/AdminUpdateOrder');
+  };
+
   return (
     // <div className='container-start-column'>
     <table>
@@ -34,7 +41,7 @@ function TableManageOrderForAdmin() {
           <td data-label='เลขพัสดุ'>-</td>
           <td data-label='Edit'>
             <a href='#' className='button-table blue'>
-              <i class='fas fa-wrench'></i>
+              <i class='fas fa-wrench' onClick={handleClickUpdate}></i>
             </a>
           </td>
           <td data-label='Cancle'>

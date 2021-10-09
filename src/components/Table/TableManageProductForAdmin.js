@@ -1,8 +1,19 @@
 import React from 'react';
 import './Table.css';
 import '../../components/Container/ContainerStartColumn.css';
+import { useHistory } from 'react-router-dom';
 
 function TableManageProductForAdmin() {
+  const history = useHistory();
+
+  const handleAddProduct = () => {
+    history.push('/AdminAddProduct');
+  };
+
+  const handleUpateProduct = () => {
+    history.push('/AdminUpdateProduct');
+  };
+
   return (
     <>
       {/* <div style={{ marginBottom: '10px' }}>
@@ -13,7 +24,7 @@ function TableManageProductForAdmin() {
       {/* <div className='container-start-column'> */}
 
       <div className='btnAdd '>
-        <button>
+        <button onClick={handleAddProduct}>
           <i class='fas fa-plus'></i> เพิ่มสินค้า
         </button>
       </div>
@@ -45,7 +56,7 @@ function TableManageProductForAdmin() {
             </td>
             <td data-label='Product Detail'>Vitamin c 500 mlg</td>
             <td data-label='Edit'>
-              <a href='#' className='button-table blue'>
+              <a href='#' className='button-table blue' onClick={handleUpateProduct}>
                 <i class='fas fa-wrench'></i>
               </a>
             </td>

@@ -1,8 +1,14 @@
 import React from 'react';
 import './CardOrderDetail.css';
 import './CardCart.css';
+import { useHistory } from 'react-router-dom';
 
 function CardOrderDetail() {
+  const history = useHistory();
+
+  const handleCancle = () => {
+    history.push('/CustomerOrder');
+  };
   return (
     <div className='cart'>
       <div className='products'>
@@ -52,7 +58,7 @@ function CardOrderDetail() {
         <p>
           จำนวน :<span>2</span>
         </p>
-        <a href='#'>ย้อนกลับ</a>
+        <a onClick={handleCancle}>ย้อนกลับ</a>
       </div>
     </div>
   );

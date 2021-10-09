@@ -1,7 +1,15 @@
 import React from 'react';
 import './Form.css';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from '../../config/axios';
 
-function FormAddProduct() {
+function FormAddProduct(props) {
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [dateofbirth, setDateofbirth] = useState(null);
+  const [picurl, setPicurl] = useState('');
+
   return (
     <div className='form-scope width-700'>
       <header style={{ marginBottom: '15px' }}>เพิ่มข้อมูลสินค้า</header>

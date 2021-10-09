@@ -1,8 +1,15 @@
 import React from 'react';
 import './CardProfile.css';
 import Topic from '../Topic/Topic';
+import { useHistory } from 'react-router-dom';
 
 function CardProfile() {
+  const history = useHistory();
+
+  const handleEditProfile = () => {
+    history.push('/CustomerProfileUpdate');
+  };
+
   return (
     <>
       <div className='container-card-hz'>
@@ -21,7 +28,7 @@ function CardProfile() {
               </p>
             </div>
             <div className='button-edit-profile'>
-              <button>
+              <button onClick={handleEditProfile}>
                 <i className='fas fa-pencil-alt'></i>&nbsp;Edit
               </button>
             </div>

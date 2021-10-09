@@ -68,6 +68,12 @@ option {
   color: #393e46;
 }
 
+form .field input,
+form .field select,
+form .field textarea {
+  color: #050505;
+}
+
 form .field input:focus,
 form .field select:focus,
 form .field textarea:focus {

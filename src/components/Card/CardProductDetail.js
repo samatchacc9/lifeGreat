@@ -2,11 +2,19 @@ import React from 'react';
 import './CardProductDetail.css';
 import '../Container/ContainerCover.css';
 import './CardHorizaltal.css';
+import { useHistory } from 'react-router-dom';
+
 function CardProductDetail() {
+  const history = useHistory();
+
+  const handleClickCancle = () => {
+    history.push('/CustomerProduct');
+  };
+
   return (
     <div className='card-frame-hz width-950'>
       <div className='btn-card-header'>
-        <i class='fas fa-times'></i>
+        <i class='fas fa-times' onClick={handleClickCancle}></i>
       </div>
 
       <div className='card-product-detail-body'>
