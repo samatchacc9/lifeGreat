@@ -28,7 +28,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
 }
 .text-detail {
   padding: 0 10px 0 20px;
@@ -71,7 +71,7 @@
   justify-content: center;
   align-items: center;
 }
-.button-edit-profile button {
+.button-edit-profile a {
   text-align: center;
   font-size: 14px;
   border: none;
@@ -84,7 +84,7 @@
   background-color: orange;
 }
 
-.button-edit-profile button:hover {
+.button-edit-profile a:hover {
   background-color: rgba(255, 166, 0, 0.699);
 }
 

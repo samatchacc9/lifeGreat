@@ -29,7 +29,7 @@ function TableManageCategoryForAdmin() {
     category();
   }, [toggle]);
 
-  console.log(categorys);
+  // console.log(categorys);
 
   // function delete
   const handleClickDelete = async (e, id) => {

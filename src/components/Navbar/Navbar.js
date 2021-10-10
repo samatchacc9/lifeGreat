@@ -12,7 +12,7 @@ import { removeToken } from '../../services/localStorage';
 function Navbar() {
   // set state ไปรับค่าเพื่อ rerendeใหม่
   const { user, setUser } = useContext(AuthContext);
-  const { openSearbar, setOpenSearchbar } = false;
+
   //state เปิดปิด hamburger
   const [clicked, setClicked] = useState(false);
 
@@ -90,17 +90,17 @@ function Navbar() {
         Life<font>Great</font>
       </Link>
 
-      <div className='menu-icon' onClick={handleClick}>
-        <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
-      </div>
-
       {/* cart icon */}
       {role === 'CUSTOMER' && (
         <span href='#' className='notification' onClick={handleClickCart}>
           <i className='fas fa-shopping-cart' />
-          <span className='badge'>15</span>
+          <span className='badge'>0</span>
         </span>
       )}
+
+      <div className='menu-icon' onClick={handleClick}>
+        <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
+      </div>
 
       {/* search bar  */}
       <ul className={clicked ? 'menu-list' : 'menu-list close'}>

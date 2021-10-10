@@ -31,13 +31,10 @@ function FormLogin(props) {
       } else if (jwtDecode(res.data.token).role === 'ADMIN') {
         history.push('/ManageOrder');
       }
-      //check role select history push
-
-      // history.push('/');
     } catch (err) {
-      // if (err.response && err.response.status === 400) {
-      //   props.setError('Invalid username or password');
-      // }
+      if (err.response && err.response.status === 400) {
+        props.setError('Invalid username or password');
+      }
       console.dir(err);
     }
   };
