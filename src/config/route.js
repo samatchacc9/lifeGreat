@@ -75,7 +75,7 @@ const route = {
         component: AdminAddProduct,
       },
       {
-        path: '/AdminUpdateProduct',
+        path: '/AdminUpdateProduct/:id',
         component: AdminUpdateProduct,
       },
     ],

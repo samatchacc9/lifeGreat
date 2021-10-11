@@ -1,18 +1,51 @@
 import React from 'react';
 import './Table.css';
 import '../../components/Container/ContainerStartColumn.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from '../../config/axios';
+import imagesProduct from '../../images/product-default.png';
 
 function TableManageProductForAdmin() {
+  let count = 1;
+
   const history = useHistory();
 
   const handleAddProduct = () => {
     history.push('/AdminAddProduct');
   };
 
-  const handleUpateProduct = () => {
-    history.push('/AdminUpdateProduct');
+  // const handleUpateProduct = () => {
+  //   history.push('/AdminUpdateProduct');
+  // };
+
+  //  State เริ่มต้น
+  const [products, setProducts] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
+  const handleClickDelete = async (e, id) => {
+    try {
+      console.log(id);
+      await axios.delete(`/product/${id}`);
+      setToggle((c) => !c);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get('/product');
+        const resProducts = res.data.products;
+        console.log(resProducts);
+        setProducts(resProducts);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchProduct();
+  }, [toggle]);
 
   return (
     <>
@@ -34,61 +67,41 @@ function TableManageProductForAdmin() {
         {/* <caption>Order Detail</caption> */}
         <thead>
           <tr>
-            <th scope='col'>No.</th>
-            <th scope='col'>Category</th>
-            <th scope='col'>Product Brand</th>
-            <th scope='col'>Product image</th>
-            <th scope='col'>Product Detail</th>
+            <th scope='col'>ลำดับ</th>
+            <th scope='col'>ประเภท</th>
+            <th scope='col'>แบรนด์</th>
+            <th scope='col'>ภาพ</th>
+            <th scope='col'>ราคา</th>
+            <th scope='col'>รายละเอียด</th>
             <th scope='col'>Edit</th>
             <th scope='col'>Cancle</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-label='No.'>1.</td>
-            <td data-label='Category'>Vitamin</td>
-            <td data-label='Product Brand'>Blackmore</td>
-            <td data-label='Product image'>
-              <img
-                src='https://images.unsplash.com/photo-1584362917137-56406a73241c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=614&q=80'
-                alt=''
-              />
-            </td>
-            <td data-label='Product Detail'>Vitamin c 500 mlg</td>
-            <td data-label='Edit'>
-              <a href='#' className='button-table blue' onClick={handleUpateProduct}>
-                <i class='fas fa-wrench'></i>
-              </a>
-            </td>
-            <td data-label='Cancle'>
-              <a href='#' className='button-table red'>
-                <i className='fas fa-window-close'></i>
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td data-label='No.'>2.</td>
-            <td data-label='Category'>Vitamin</td>
-            <td data-label='Product Brand'>Blackmore</td>
-            <td data-label='Product image'>
-              <img
-                src='https://images.unsplash.com/photo-1584362917137-56406a73241c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=614&q=80'
-                alt=''
-              />
-            </td>
-            <td data-label='Product Detail'>Vitamin c 500 mlg</td>
-            <td data-label='Edit'>
-              <a href='#' className='button-table blue'>
-                <i class='fas fa-wrench'></i>
-              </a>
-            </td>
-            <td data-label='Cancle'>
-              <a href='#' className='button-table red'>
-                <i className='fas fa-window-close'></i>
-              </a>
-            </td>
-          </tr>
+          {products.map((item) => {
+            return (
+              <tr>
+                <td data-label='ลำดับ'>{count++}</td>
+                <td data-label='ประเภท'>{item.Category.categoryname}</td>
+                <td data-label='แบรนด์'>{item.productbrand}</td>
+                <td data-label='ภาพ'>
+                  {item.picurl ? <img src={item.picurl} alt='product' /> : <img src={imagesProduct} alt='product' />}
+                </td>
+                <td data-label='Product Detail'>{item.productprice}</td>
+                <td data-label='Product Detail'>{item.productdetail}</td>
+                <td data-label='Edit'>
+                  <Link to={{ pathname: `/AdminUpdateProduct/${item.id}`, state: item }} className='button-table blue'>
+                    <i class='fas fa-wrench'></i>
+                  </Link>
+                </td>
+                <td data-label='Cancle'>
+                  <button className='button-table red' onClick={(e) => handleClickDelete(e, item.id)}>
+                    <i className='fas fa-window-close'></i>
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
       {/* </div> */}

@@ -1,10 +1,31 @@
 import React from 'react';
 import './Form.css';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import axios from '../../config/axios';
 
 function FormAddProduct(props) {
+  const location = useLocation();
+  const history = useHistory();
+
+  const [optionCategory, SetOptionCategory] = useState([]);
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const res = await axios.get('/category');
+        const fetChcategorys = res.data.categorys;
+        // console.log(fetChcategorys);
+        SetOptionCategory(fetChcategorys);
+      } catch (err) {
+        console.dir(err);
+      }
+    };
+    fetchCategory();
+  }, []);
+
+  const [category, setCategory] = useState('');
+  // console.log(category);
   const [productbrand, setProductbrand] = useState('');
   const [productname, setProductname] = useState('');
   const [productdetail, setProductdetail] = useState('');
@@ -18,17 +39,43 @@ function FormAddProduct(props) {
     setPicurl(e.target.files[0]);
   };
 
+  const handleAddProduct = async (e) => {
+    try {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('category', category);
+      formData.append('productbrand', productbrand);
+      formData.append('productname', productname);
+      formData.append('productdetail', productdetail);
+      formData.append('productprice', productprice);
+      formData.append('productamount', productamount);
+      formData.append('picurl', picurl);
+
+      const res = await axios.post(`/product`, formData);
+
+      // console.log(res.data);
+
+      history.push('/ManageProduct');
+    } catch (err) {
+      console.log(err);
+      // setErrorAddForm({ ...err, errBack: err.response.data.message });
+    }
+  };
+
   return (
     <div className='form-scope width-700'>
       <header style={{ marginBottom: '15px' }}>เพิ่มข้อมูลสินค้า</header>
 
-      <form action='#'>
+      <form onSubmit={handleAddProduct}>
         <div className='dbl-field'>
           <div className='field'>
-            <select name='category' id='district' value='' required>
+            <select name='categorys' id='categorys' value={category} onChange={(e) => setCategory(e.target.value)}>
               <option value=''>เลือกประเภทสินค้า</option>
-              <option value='Dusit'>Dusit</option>
-              <option value='Bangrak'>Bangrak</option>
+              {optionCategory.map((item) => (
+                <option key={item.id} value={item.id}>
+                  {item.categoryname}
+                </option>
+              ))}
             </select>
           </div>
           <div className='field'>
@@ -54,9 +101,9 @@ function FormAddProduct(props) {
           <div className='field'>
             <input
               type='text'
-              placeholder='กรอกจำนวน'
-              value={productamount}
-              onChange={(e) => setProductamount(e.target.value)}
+              placeholder='กรอกชื่อสินค้า'
+              value={productname}
+              onChange={(e) => setProductname(e.target.value)}
             />
           </div>
         </div>
@@ -73,10 +120,20 @@ function FormAddProduct(props) {
             onChange={(e) => setProductdetail(e.target.value)}
           />
         </div>
-        <div className='field'>
-          <input type='file' id='myfile' name='myfile' className='upload-box' onChange={handleChangeFile} />
-        </div>
 
+        <div className='dbl-field'>
+          <div className='field'>
+            <input
+              type='text'
+              placeholder='กรอกจำนวน'
+              value={productamount}
+              onChange={(e) => setProductamount(e.target.value)}
+            />
+          </div>
+          <div className='field'>
+            <input type='file' id='myfile' name='myfile' className='upload-box' onChange={handleChangeFile} />
+          </div>
+        </div>
         <div className='form-footer'>
           <div className='button-area'>
             <button type='reset' className='orange'>

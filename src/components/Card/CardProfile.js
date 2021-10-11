@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../contexts/authContext';
 import imagesUser from '../../images/default-profile-user.png';
 import axios from '../../config/axios';
+import { formatShortMonthShortYear } from '../../services/date';
 
 function CardProfile() {
   const history = useHistory();
