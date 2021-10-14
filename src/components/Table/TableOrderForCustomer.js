@@ -32,7 +32,7 @@ function TableOrderForCustomer() {
     // <div className='container-start-column'>
     <table>
       <caption>
-        <Topic title={'ใบสั่งสินค้า'} />
+        <Topic title={'Orders'} />
       </caption>
       <thead>
         <tr>

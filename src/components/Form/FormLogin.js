@@ -11,7 +11,7 @@ import jwtDecode from 'jwt-decode';
 import { AuthContext } from '../../contexts/authContext';
 import { setToken } from '../../services/localStorage';
 
-function FormLogin(props) {
+function FormLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -33,7 +33,7 @@ function FormLogin(props) {
       }
     } catch (err) {
       if (err.response && err.response.status === 400) {
-        props.setError('Invalid username or password');
+        // props.setError('Invalid username or password');
       }
       console.dir(err);
     }

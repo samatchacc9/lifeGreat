@@ -34,7 +34,7 @@ form .field-col4 {
 .field-col4 .field {
   height: 40px;
   position: relative; /* ใส่คลุม absolute*/
-  width: calc(100% / 4 - 13px);
+  width: calc(100% / 1 - 13px);
 }
 
 .form-all .title {

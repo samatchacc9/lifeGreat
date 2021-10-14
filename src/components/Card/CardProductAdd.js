@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 // import { ProductContext } from '../../contexts/productContext';
 import { useContext } from 'react';
 import { CartContext } from '../../contexts/cartContext';
+import { SearchContext } from '../../contexts/searchContext';
 
 function CardProductAdd() {
   const history = useHistory();
@@ -17,18 +18,29 @@ function CardProductAdd() {
 
   const { product, onAdd } = useContext(CartContext);
 
+  const { searchText } = useContext(SearchContext);
+
   // console.log('views product:' + { products });
-  // console.log(products);
+  // console.log(product);
 
   // const handleClickCard = () => {
   //   history.push('/CustomerProductDetail');
   // };
 
+  // Search
+
+  const filterdProducts = product.filter(
+    (item) =>
+      item.productbrand.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.productname.toLowerCase().includes(searchText.toLowerCase()) ||
+      item.productdetail.toLowerCase().includes(searchText.toLowerCase()),
+  );
+
   return (
     <section>
       <Topic title={'Product'} />
       <div className='cards'>
-        {product.map((item) => {
+        {filterdProducts.map((item) => {
           return (
             <div className='card' key={item.id}>
               <Link to={{ pathname: `/CustomerProductDetail/${item.id}`, state: item }} className='image-section'>

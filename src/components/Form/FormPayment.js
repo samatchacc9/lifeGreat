@@ -5,10 +5,12 @@ import { useContext } from 'react';
 import { useState } from 'react';
 import { CartContext } from '../../contexts/cartContext';
 import axios from '../../config/axios';
+import { OrderContext } from '../../contexts/orderContext';
 
 function FormPayment() {
   // useContext รวบมาส่ง
   const { total, cartItems, setCartItems } = useContext(CartContext);
+  const { setToggleFetch } = useContext(OrderContext);
 
   // console.log(`ดู cartItems: ${cartItems}`);
 
@@ -52,6 +54,7 @@ function FormPayment() {
 
     // ส่งไป back end
     axios.post('/order', formData).then((res) => {
+      setToggleFetch((cur) => !cur);
       setCartItems([]);
       history.push({ pathname: '/CustomerOrder' });
     });

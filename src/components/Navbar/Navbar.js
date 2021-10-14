@@ -3,16 +3,22 @@ import { GUEST, ADMIN, CUSTOMER } from './MenuList';
 import { useState, useContext } from 'react';
 import './Navbar.css';
 import Searchbar from '../Searchbar/Searchbar';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/authContext';
 import { useHistory } from 'react-router-dom';
 import { removeToken } from '../../services/localStorage';
 import { CartContext } from '../../contexts/cartContext';
+import { SearchContext } from '../../contexts/searchContext';
 
 function Navbar() {
   // set state ไปรับค่าเพื่อ rerendeใหม่
   const { user, setUser } = useContext(AuthContext);
+  const { searchText } = useContext(SearchContext);
+
+  const location = useLocation();
+
+  // console.log(location.pathname);
 
   const { cartItems } = useContext(CartContext);
 
@@ -111,8 +117,9 @@ function Navbar() {
       </div>
 
       {/* search bar  */}
+
       <ul className={clicked ? 'menu-list' : 'menu-list close'}>
-        {role === ('CUSTOMER' || 'GUEST') && <Searchbar />}
+        {role === ('CUSTOMER' || 'GUEST') && location.pathname === '/CustomerProduct' && <Searchbar />}
         {menuList}
       </ul>
     </nav>

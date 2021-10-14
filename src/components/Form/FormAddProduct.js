@@ -3,10 +3,14 @@ import './Form.css';
 import { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from '../../config/axios';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 
 function FormAddProduct(props) {
   const location = useLocation();
   const history = useHistory();
+
+  const { product } = useContext(CartContext);
 
   const [optionCategory, SetOptionCategory] = useState([]);
 
@@ -22,7 +26,7 @@ function FormAddProduct(props) {
       }
     };
     fetchCategory();
-  }, []);
+  }, [product]);
 
   const [category, setCategory] = useState('');
   // console.log(category);

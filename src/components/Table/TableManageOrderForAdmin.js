@@ -6,10 +6,13 @@ import { useHistory, Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { OrderContext } from '../../contexts/orderContext';
 import { formatShortMonthShortYear } from '../../services/date';
+import { SearchContext } from '../../contexts/searchContext';
 
 function TableManageOrderForAdmin() {
   let count = 1;
   const { order } = useContext(OrderContext);
+
+  const { searchNameText } = useContext(SearchContext);
 
   // console.log(order);
 
@@ -20,6 +23,13 @@ function TableManageOrderForAdmin() {
   const handleClickUpdate = () => {
     history.push('/AdminUpdateOrder');
   };
+
+  // search
+  const filterdOrders = sortOrder.filter(
+    (item) =>
+      item.User.firstname.toLowerCase().includes(searchNameText.toLowerCase()) ||
+      item.User.lastname.toLowerCase().includes(searchNameText.toLowerCase()),
+  );
 
   return (
     // <div className='container-start-column'>
@@ -39,7 +49,7 @@ function TableManageOrderForAdmin() {
         </tr>
       </thead>
       <tbody>
-        {sortOrder.map((order) => (
+        {filterdOrders.map((order) => (
           <tr key={order.id}>
             <td data-label='ลำดับ'>{count++}</td>
             <td data-label='ชื่อ-สกุล'>
