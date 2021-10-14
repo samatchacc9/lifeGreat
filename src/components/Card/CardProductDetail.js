@@ -2,10 +2,15 @@ import React from 'react';
 import './CardProductDetail.css';
 import '../Container/ContainerCover.css';
 import './CardHorizaltal.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 
 function CardProductDetail() {
+  const location = useLocation();
   const history = useHistory();
+
+  const { onAdd, onRemove } = useContext(CartContext);
 
   const handleClickCancle = () => {
     history.push('/CustomerProduct');
@@ -20,30 +25,23 @@ function CardProductDetail() {
       <div className='card-product-detail-body'>
         <div className='card-part1-hz'>
           <div className='image-detail-square '>
-            <img
-              src='https://images.unsplash.com/photo-1619893072134-1699f6856102?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=464&q=80'
-              alt=''
-            />
+            <img src={location.state.picurl} alt='' />
           </div>
         </div>
         <div className='card-part2-hz'>
           <div className='text-detail'>
             <p>
-              Brand&nbsp;:&nbsp; <span> Good Life</span>
+              {location.state.productbrand}&nbsp;:&nbsp; <span> {location.state.productname}</span>
             </p>
             <p>
-              Price&nbsp;:&nbsp;<span>50฿</span>
+              Price&nbsp;:&nbsp;<span>{location.state.productprice}฿</span>
             </p>
             <p>
               Detail&nbsp;:&nbsp;
-              <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, quo mollitia quia accusantium
-                inventore sit! Sequi facere eius et est error, aliquid, quidem dicta hic dolorem accusantium placeat
-                neque nobis?
-              </span>
+              <span>{location.state.productdetail}</span>
             </p>
 
-            <div className='addProduct'>
+            {/* <div className='addProduct'>
               <div className='product-amount'>
                 <i className='fa fa-minus'></i>
                 <span className='product-number'>1</span>
@@ -55,7 +53,7 @@ function CardProductDetail() {
                   <i class='fas fa-shopping-cart'></i> <span>เพิ่มสินค้าลงในตระกร้า</span>
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

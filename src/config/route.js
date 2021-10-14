@@ -59,7 +59,7 @@ const route = {
         component: AdminManageProduct,
       },
       {
-        path: '/AdminUpdateOrder',
+        path: '/AdminUpdateOrder/:id',
         component: AdminUpdateOrder,
       },
       {
@@ -101,11 +101,11 @@ const route = {
         component: CustomerOrder,
       },
       {
-        path: '/CustomerProfileUpdate',
+        path: '/CustomerProfileUpdate/:id',
         component: CustomerProfileUpdate,
       },
       {
-        path: '/CustomerProductDetail',
+        path: '/CustomerProductDetail/:id',
         component: CustomerProductDetail,
       },
       {

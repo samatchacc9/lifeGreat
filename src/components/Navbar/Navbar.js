@@ -8,11 +8,17 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/authContext';
 import { useHistory } from 'react-router-dom';
 import { removeToken } from '../../services/localStorage';
+import { CartContext } from '../../contexts/cartContext';
 
 function Navbar() {
   // set state ไปรับค่าเพื่อ rerendeใหม่
   const { user, setUser } = useContext(AuthContext);
 
+  const { cartItems } = useContext(CartContext);
+
+  const qty = cartItems.reduce((acumulator, item) => acumulator + item.qty, 0);
+
+  // console.log(cartItems);
   //state เปิดปิด hamburger
   const [clicked, setClicked] = useState(false);
 
@@ -90,11 +96,13 @@ function Navbar() {
         Life<font>Great</font>
       </Link>
 
-      {/* cart icon */}
+      {/*===================================================== cart icon */}
+
       {role === 'CUSTOMER' && (
-        <span href='#' className='notification' onClick={handleClickCart}>
+        <span className='notification' onClick={handleClickCart}>
           <i className='fas fa-shopping-cart' />
-          <span className='badge'>0</span>
+          {/* <span className='badge'>{cartItems.length}</span> */}
+          <span className='badge'>{qty}</span>
         </span>
       )}
 

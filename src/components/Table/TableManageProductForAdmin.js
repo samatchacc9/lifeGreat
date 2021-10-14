@@ -25,11 +25,11 @@ function TableManageProductForAdmin() {
 
   const handleClickDelete = async (e, id) => {
     try {
-      console.log(id);
+      // console.log(id);
       await axios.delete(`/product/${id}`);
       setToggle((c) => !c);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 

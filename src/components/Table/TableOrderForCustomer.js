@@ -2,14 +2,31 @@ import React from 'react';
 import Topic from '../Topic/Topic';
 import './Table.css';
 import '../Container/ContainerStartColumn.css';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { OrderContext } from '../../contexts/orderContext';
+import { AuthContext } from '../../contexts/authContext';
 
 function TableOrderForCustomer() {
   const history = useHistory();
+  let count = 1;
+  const { order } = useContext(OrderContext);
+  const { user } = useContext(AuthContext);
+  // console.log(user);
 
   const handleDetailOrder = () => {
     history.push('/CustomerOrderDetail');
   };
+
+  const currentUser = [...order].filter((order) => order.User.id === user.id);
+
+  console.log(currentUser);
+  // console.log(order);
+  // console.log(order.User.id);
+  // console.log(user.id);
+  // const currentUser = [...order].filter((item) => item.id === user.id);
+
+  // console.log(currentUser);
 
   return (
     // <div className='container-start-column'>
@@ -23,40 +40,33 @@ function TableOrderForCustomer() {
           <th scope='col'>วันที่สั่ง</th>
           <th scope='col'>สถานะการชำระเงิน</th>
           <th scope='col'>ยอดรวม</th>
-          <th scope='col'>เลขพัสดุ</th>
-          <th scope='col'>รายละเอียด</th>
+
+          {/* <th scope='col'>รายละเอียด</th> */}
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td data-label='ลำดับ'>1.</td>
-          <td data-label='วันที่สั่ง'>20-10-2021</td>
-          <td data-label='สถานะการชำระเงิน'>
-            <font className='pending'> pending </font>
-          </td>
-          <td data-label='ยอดรวม'>800฿</td>
-          <td data-label='เลขพัสดุ'>-</td>
-          <td data-label='รายละเอียด'>
+        {/* const result = words.filter(word => word.length > 6); */}
+        {/* {order.filter(order.User.id === user.id) => } */}
+        {/* {const newArrey= [...order].filter((item) => item.id === user.id)} */}
+        {currentUser.map((order) => (
+          <tr>
+            <td data-label='ลำดับ'>{count++}</td>
+            <td data-label='วันที่สั่ง'>{new Date(order.orderdate).toDateString()}</td>
+
+            <td data-label='สถานะการชำระเงิน'>
+              <font className='pending'>{order.paymentstatus}</font>
+            </td>
+            <td data-label='ยอดรวม'>
+              {order.OrderItems.reduce((acc, product) => +acc + +product.productprice * +product.qty, 0)} ฿
+            </td>
+            {/* {order.OrderItems.reduce((acc, product) => +acc + +product.productprice * +product.qty, 0)} */}
+            {/* <td data-label='รายละเอียด'>
             <a href='#' className='button-table blue'>
               <i className='fas fa-eye' onClick={handleDetailOrder}></i>
             </a>
-          </td>
-        </tr>
-
-        <tr>
-          <td data-label='ลำดับ'>2.</td>
-          <td data-label='วันที่สั่ง'>20-10-2021</td>
-          <td data-label='สถานะการชำระเงิน'>
-            <font className='completed'> completed </font>
-          </td>
-          <td data-label='ยอดรวม'>600฿</td>
-          <td data-label='เลขพัสดุ'>114-5678-93</td>
-          <td data-label='รายละเอียด'>
-            <a href='#' className='button-table blue'>
-              <i className='fas fa-eye'></i>
-            </a>
-          </td>
-        </tr>
+          </td> */}
+          </tr>
+        ))}
       </tbody>
     </table>
     // </div>

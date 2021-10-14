@@ -1,33 +1,76 @@
 import React from 'react';
 import './FormCustomerUpdateProfile.css';
 import './FormUpdateOrder.css';
+import { useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import axios from '../../config/axios';
+import { useContext } from 'react';
+import { OrderContext } from '../../contexts/orderContext';
+
 function FormUpdateOrder() {
+  const location = useLocation();
+  const history = useHistory();
+
+  const { setToggleFetch } = useContext(OrderContext);
+
+  const [bankname, setBankname] = useState(location.state.bankname);
+  const [bankno, setBankno] = useState(location.state.bankno);
+  const [paymentstatus, setPaymentstatus] = useState(location.state.paymentstatus);
+  const [orderdate, setOrderdate] = useState(location.state.orderdate);
+  const [picurl, setpicurl] = useState(location.state.picurl);
+
+  const handleUpdateOrder = (e) => {
+    e.preventDefault();
+
+    axios
+      .put(`/order/${location.state.id}`, { bankname, bankno, paymentstatus, orderdate })
+      .then(() => {
+        setToggleFetch((cur) => !cur);
+        history.push({
+          pathname: '/ManageOrder',
+          state: { successMessage: 'Your account has been created. Category to continue.' },
+        });
+      })
+      .catch((err) => {
+        // if (err.response && err.response.status === 400) {
+        //   props.setError(err.response.data.message);
+        // }
+      });
+  };
+
   return (
     <div className='form-scope width-950'>
       <header>อัพเดทรายการสั่งซื้อ</header>
-      <form action='#'>
+
+      <form onSubmit={handleUpdateOrder}>
         <div className='image-form-update-order'>
-          <img
-            src='https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80'
-            alt=''
-          />
+          <img src={picurl} alt='' />
         </div>
 
         <div className='dbl-field'>
           <div className='field'>
-            <select name='Sub-district' id='zipcode' value='' required>
+            <select name='Sub-district' id='zipcode' value={bankname} onChange={(e) => setBankname(e.target.value)}>
               <option value=''>เลือกธนาคาร</option>
-              <option value='TMB'>TMB</option>
-              <option value='SCB'>SCB</option>
+              <option value='ทหารไทยTMB'>TMB</option>
+              <option value='ไทยพาณิชย์SCB'>SCB</option>
             </select>
           </div>
           <div className='field'>
-            <input type='text' placeholder='เลขบัญชีธนาคาร' />
+            <input
+              type='text'
+              placeholder='เลขบัญชีธนาคาร'
+              value={bankno}
+              onChange={(e) => setBankno(e.target.value)}
+            />
           </div>
         </div>
         <div className='dbl-field'>
           <div className='field'>
-            <select name='Sub-district' id='zipcode' value='' required>
+            <select
+              name='Sub-district'
+              id='zipcode'
+              value={paymentstatus}
+              onChange={(e) => setPaymentstatus(e.target.value)}>
               <option value=''>เลือกสถานะการชำระเงิน</option>
               <option value='PENDING'>PENDING</option>
               <option value='COMPLETED'>COMPLETED</option>
@@ -40,6 +83,8 @@ function FormUpdateOrder() {
               onFocus={(e) => (e.currentTarget.type = 'date')}
               onBlur={(e) => (e.currentTarget.type = 'text')}
               id='date'
+              value={orderdate}
+              onChange={(e) => setOrderdate(e.target.value)}
             />
             <i class='far fa-calendar-alt'></i>
           </div>

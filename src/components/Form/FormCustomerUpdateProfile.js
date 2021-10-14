@@ -7,29 +7,27 @@ import { useHistory, useLocation } from 'react-router-dom';
 import axios from '../../config/axios';
 
 function FormCustomerUpdateProfile() {
-  let { user } = useContext(AuthContext);
+  // let { user } = useContext(AuthContext);
   const location = useLocation();
-
   const history = useHistory();
-  // console.log(user);
-  // set state เพื่อผูกกับ input
-  const [id, setId] = useState(user.id);
-  console.log(id);
-  const [firstname, setFirstname] = useState(user.firstname);
-  const [lastname, setLastname] = useState(user.lastname);
-  const [dateofbirth, setDateofbirth] = useState(user.dateofbirth);
-  const [phone, setPhone] = useState(user.phone);
-  const [email, setEmail] = useState(user.email);
-  const [gender, setGender] = useState(user.gender);
-  const [province, setProvince] = useState(user.province);
-  const [district, setDistrict] = useState(user.district);
-  const [subdistrict, setSubdistrict] = useState(user.subdistrict);
-  const [houseno, setHouseno] = useState(user.houseno);
-  const [village, setVillage] = useState(user.village);
-  const [zipcode, setZipcode] = useState(user.zipcode);
-  const [username, setUsername] = useState(user.username);
-  const [password, setPassword] = useState(user.password);
-  const [picurl, setPicurl] = useState(user.picurl);
+
+  const [id, setId] = useState(location.state.id);
+  const [firstname, setFirstname] = useState(location.state.firstname);
+  const [lastname, setLastname] = useState(location.state.lastname);
+  const [dateofbirth, setDateofbirth] = useState(location.state.dateofbirth);
+  const [phone, setPhone] = useState(location.state.phone);
+  const [email, setEmail] = useState(location.state.email);
+  const [gender, setGender] = useState(location.state.gender);
+  const [province, setProvince] = useState(location.state.province);
+  const [district, setDistrict] = useState(location.state.district);
+  const [subdistrict, setSubdistrict] = useState(location.state.subdistrict);
+  const [houseno, setHouseno] = useState(location.state.houseno);
+  const [village, setVillage] = useState(location.state.village);
+  const [zipcode, setZipcode] = useState(location.state.zipcode);
+  const [username, setUsername] = useState(location.state.username);
+  const [password, setPassword] = useState('');
+  const [picurl, setPicurl] = useState(location.state.picurl);
+  const [isUpdatePic, setIsUpdatePic] = useState(false);
 
   // onSubmit
   const handleSubmitUpdateProfile = async (e) => {
@@ -50,8 +48,10 @@ function FormCustomerUpdateProfile() {
     formData.append('zipcode', zipcode);
     formData.append('username', username);
     formData.append('password', password);
-    formData.append('picurl', picurl);
 
+    if (isUpdatePic) {
+      formData.append('picurl', picurl);
+    }
     axios.put(`/profile/ ${id}`, formData).then((res) => {
       // .put(`/category/${location.state.id}`, { categoryname })
       history.push({ pathname: '/CustomerProfile' });
@@ -61,6 +61,7 @@ function FormCustomerUpdateProfile() {
   // function image
   const handleChangeFile = (e) => {
     setPicurl(e.target.files[0]);
+    setIsUpdatePic(true);
   };
 
   return (
@@ -68,7 +69,11 @@ function FormCustomerUpdateProfile() {
       <header>อัพเดทโปรไฟล์</header>
       <form onSubmit={handleSubmitUpdateProfile}>
         <div className='image-form'>
-          {user.picurl ? <img src={user.picurl} alt='profile' /> : <img src={imagesUser} alt='profile' />}
+          {location.state.picurl ? (
+            <img src={location.state.picurl} alt='profile' />
+          ) : (
+            <img src={imagesUser} alt='profile' />
+          )}
         </div>
         <div className='title'>ข้อมูลส่วนตัว</div>
         <div className='dbl-field'>

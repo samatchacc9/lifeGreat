@@ -8,7 +8,7 @@ function AdminManageOrder() {
     <>
       <div className='container-start-column'>
         <Topic title={'จัดการใบสั่ง'} />
-        <SearchOrderForAdmin />
+        {/* <SearchOrderForAdmin /> */}
         <TableManageOrderForAdmin />
       </div>
     </>

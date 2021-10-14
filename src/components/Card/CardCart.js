@@ -1,102 +1,93 @@
 import React from 'react';
 import './CardCart.css';
 import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/cartContext';
 
 function CardCart() {
   const history = useHistory();
+
+  const { cartItems, onAdd, onRemove, onDeleteItem, setTotal, total } = useContext(CartContext);
+
+  let itemPrices = cartItems.reduce((a, c) => a + c.productprice * c.qty, 0);
+
+  setTotal(itemPrices);
+  const qty = cartItems.reduce((acumulator, item) => acumulator + item.qty, 0);
 
   const handlepayment = () => {
     history.push('/CustomerPayment');
   };
 
+  // console.log(qty);
+  // console.log(cartItems.qty);
   return (
     <>
-      <div className='cart'>
-        <div className='products'>
-          <div className='product-order-header'>ตะกร้าสินค้า</div>
-          <div className='product'>
-            <div className='cart-img'>
-              <img src='https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80' />
-            </div>
-            <div className='product-info'>
-              <p>แบรนด์</p>
-              <p>
-                <span>Lorem ipsum dolor sit amet consectetur</span>{' '}
-              </p>
-              <p>
-                ราคาต่อชิ้น : <span>200</span>
-              </p>
-              <p>
-                รวม : <span>1000</span>
-              </p>
+      {/* {errorAddForm.errBack && <div className="invalid-feedback">{errorAddForm.errBack}</div>} */}
+      {cartItems.length === 0 ? (
+        <div>
+          <h1 style={{ fontWeight: 'bold', color: '#01aacd' }}>ไม่พบสินค้า</h1>
+        </div>
+      ) : (
+        <div className='cart' style={{ margin: '30px' }}>
+          <div className='products'>
+            <div className='product-order-header'>ตะกร้าสินค้า</div>
 
-              <div className='product-order-amount'>
-                <div className='count-product'>
-                  <div className='manage-product'>
-                    <i className='fa fa-minus'></i>
-                    <span className='product-number'>1</span>
-                    <i className='fa fa-plus'></i>
-                  </div>
+            {cartItems.map((item) => (
+              <div className='product' key={item.id}>
+                <div className='cart-img'>
+                  <img src={item.picurl} />
+                </div>
+                <div className='product-info'>
+                  <p>{item.productbrand}</p>
+                  <p>
+                    <span>{item.productdetail}</span>
+                  </p>
+                  <p>
+                    ราคาต่อชิ้น : <span>{item.productprice}</span>
+                  </p>
+                  {/* <p>
+                  รวม : <span>1000</span>
+                </p> */}
 
-                  <div className='btn-cart-delete '>
-                    <button>
-                      <i className='fa fa-trash' aria-hidden='true'></i>
-                    </button>
+                  <div className='product-order-amount'>
+                    <div className='count-product'>
+                      <div className='manage-product'>
+                        <i className='fa fa-minus' onClick={() => onRemove(item)}></i>
+                        <span className='product-number'>{item.qty}</span>
+                        <i className='fa fa-plus' onClick={() => onAdd(item)}></i>
+                      </div>
+
+                      <div className='btn-cart-delete '>
+                        {/* <button>
+                        <i className='fa fa-trash' aria-hidden='true'></i>
+                      </button> */}
+
+                        <button onClick={() => onDeleteItem(item)}>
+                          <i className='fa fa-trash' aria-hidden='true'></i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
 
-          <div className='product'>
-            <div className='cart-img'>
-              <img src='https://images.unsplash.com/photo-1570831739435-6601aa3fa4fb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=626&q=80' />
-            </div>
-            <div className='product-info'>
-              <p>แบรนด์</p>
-              <p>
-                <span>Lorem ipsum dolor sit amet consectetur</span>
-              </p>
-              <p>
-                ราคาต่อชิ้น : <span>200</span>
-              </p>
-              <p>
-                รวม : <span>1000</span>
-              </p>
+          <div className='cart-total'>
+            <p>
+              รวมทั้งหมด :<span>฿{total.toFixed(2)}</span>
+            </p>
 
-              <div className='product-order-amount'>
-                <div className='count-product'>
-                  <div className='manage-product'>
-                    <i className='fa fa-minus'></i>
-                    <span className='product-number'>1</span>
-                    <i className='fa fa-plus'></i>
-                  </div>
+            <p>
+              จำนวน :<span>{qty}</span>
+            </p>
 
-                  <div className='btn-cart-delete '>
-                    <button>
-                      <i className='fa fa-trash' aria-hidden='true'></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <a href='#' onClick={handlepayment}>
+              ชำระเงิน
+            </a>
           </div>
         </div>
-
-        <div className='cart-total'>
-          <p>
-            รวมทั้งหมด :<span>3,000</span>
-          </p>
-
-          <p>
-            จำนวน :<span>2</span>
-          </p>
-
-          <a href='#' onClick={handlepayment}>
-            ชำระเงิน
-          </a>
-        </div>
-      </div>
+      )}
     </>
   );
 }
