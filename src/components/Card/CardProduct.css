@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: auto;
   /* border: rgb(253, 5, 5) solid 1px; */
 }

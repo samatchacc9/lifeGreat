@@ -6,7 +6,7 @@
   display: flex;
   padding-top: 10px;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* background: tomato; */
   background: #fffdf9;
 }

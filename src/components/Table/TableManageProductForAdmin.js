@@ -5,6 +5,7 @@ import { useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from '../../config/axios';
 import imagesProduct from '../../images/product-default.png';
+import Swal from 'sweetalert2';
 
 function TableManageProductForAdmin() {
   let count = 1;
@@ -25,9 +26,21 @@ function TableManageProductForAdmin() {
 
   const handleClickDelete = async (e, id) => {
     try {
+      Swal.fire({
+        title: 'ต้องการลบหรือไม่',
+        // text: "You won't be logout",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`/product/${id}`);
+          setToggle((c) => !c);
+        }
+      });
       // console.log(id);
-      await axios.delete(`/product/${id}`);
-      setToggle((c) => !c);
     } catch (err) {
       // console.log(err);
     }
@@ -72,6 +85,7 @@ function TableManageProductForAdmin() {
             <th scope='col'>แบรนด์</th>
             <th scope='col'>ภาพ</th>
             <th scope='col'>ราคา</th>
+            <th scope='col'>จำนวนสินค้า</th>
             <th scope='col'>รายละเอียด</th>
             <th scope='col'>Edit</th>
             <th scope='col'>Cancle</th>
@@ -87,8 +101,9 @@ function TableManageProductForAdmin() {
                 <td data-label='ภาพ'>
                   {item.picurl ? <img src={item.picurl} alt='product' /> : <img src={imagesProduct} alt='product' />}
                 </td>
-                <td data-label='Product Detail'>{item.productprice}</td>
-                <td data-label='Product Detail'>{item.productdetail}</td>
+                <td data-label='ราคา'>{item.productprice}</td>
+                <td data-label='ราคา'>{item.productamount}</td>
+                <td data-label='รายละเอียด'>{item.productdetail}</td>
                 <td data-label='Edit'>
                   <Link to={{ pathname: `/AdminUpdateProduct/${item.id}`, state: item }} className='button-table blue'>
                     <i class='fas fa-wrench'></i>

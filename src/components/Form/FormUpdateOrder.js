@@ -92,9 +92,9 @@ function FormUpdateOrder() {
 
         <div className='form-footer'>
           <div className='button-area'>
-            <button type='reset' className='orange'>
+            {/* <button type='reset' className='orange'>
               reset
-            </button>
+            </button> */}
 
             <button type='submit' className='green'>
               save

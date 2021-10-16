@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { ProductContext } from '../../contexts/productContext';
 // import {ProductContext } from '../../';
+import Swal from 'sweetalert2';
 
 function CardProduct() {
   // const {products} = useContext(ProductContext)
@@ -20,10 +21,18 @@ function CardProduct() {
     history.push('/CustomerProductDetail');
   };
 
+  const handleClickProduct = (e) => {
+    Swal.fire({
+      title: 'กรุณาเข้าสู่ระบบ',
+      // text: 'Do you want to continue',
+      icon: 'warning',
+      confirmButtonText: 'OK',
+    });
+  };
   return (
     <section>
       <Topic title={'Product'} />
-      <div className='cards'>
+      <div className='cards' onClick={handleClickProduct}>
         {products.map((item) => {
           return (
             <div className='card' onClick={handleClickCard}>

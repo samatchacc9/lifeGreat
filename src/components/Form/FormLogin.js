@@ -10,32 +10,76 @@ import axios from '../../config/axios';
 import jwtDecode from 'jwt-decode';
 import { AuthContext } from '../../contexts/authContext';
 import { setToken } from '../../services/localStorage';
+import Swal from 'sweetalert2';
+import { OrderContext } from '../../contexts/orderContext';
+import './Validate.css';
+// import withReactContent from 'sweetalert2-react-content';
 
 function FormLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setErr] = useState({});
+
+  const { setToggleFetch } = useContext(OrderContext);
+
+  // const [toggleFetch, setToggleFetch] = useState(false);
 
   const { setUser } = useContext(AuthContext);
 
   const history = useHistory();
 
+  const handleClickReset = (e) => {
+    setUsername('');
+    setPassword('');
+  };
+
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
+    let isError = false;
+
     try {
-      const res = await axios.post('/login', { username, password });
-      setToken(res.data.token);
-      setUser(jwtDecode(res.data.token));
-      // console.log(jwtDecode(res.data.token).role);
-      if (jwtDecode(res.data.token).role === 'CUSTOMER') {
-        history.push('/CustomerProfile');
-      } else if (jwtDecode(res.data.token).role === 'ADMIN') {
-        history.push('/ManageOrder');
+      if (username.trim() === '') {
+        setErr((curr) => ({ ...curr, username: 'Username is required' }));
+        isError = true;
+      }
+      if (password.trim() === '') {
+        setErr((curr) => ({ ...curr, password: 'Password is required' }));
+        isError = true;
+      }
+
+      if (!isError) {
+        const res = await axios.post('/login', { username, password });
+        setToken(res.data.token);
+        setUser(jwtDecode(res.data.token));
+
+        if (jwtDecode(res.data.token).role === 'CUSTOMER') {
+          Swal.fire({
+            title: 'ยินดีต้อนรับ',
+            // text: 'Do you want to continue',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
+          history.push('/CustomerProfile');
+        } else if (jwtDecode(res.data.token).role === 'ADMIN') {
+          Swal.fire({
+            title: 'ยินดีต้อนรับเข้าสู่ระบบ',
+            icon: 'success',
+            confirmButtonText: 'OK',
+          });
+          history.push('/ManageOrder');
+        }
+        // console.log('Tish');
+        setToggleFetch((cur) => !cur);
       }
     } catch (err) {
-      if (err.response && err.response.status === 400) {
-        // props.setError('Invalid username or password');
-      }
       console.dir(err);
+
+      if (err.response.data.message) {
+        setErr((curr) => ({ ...curr, username: err.response.data.message }));
+      }
+      if (err.response.data.message) {
+        setErr((curr) => ({ ...curr, password: err.response.data.message }));
+      }
     }
   };
 
@@ -52,6 +96,7 @@ function FormLogin() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
+              {err.username && <p className='validate'> {err.username} </p>}
               <i className='fas fa-user'></i>
             </div>
             <div className='field'>
@@ -61,13 +106,14 @@ function FormLogin() {
                 cvalue={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {err.password && <p className='validate'> {err.password} </p>}
               <i className='fas fa-lock'></i>
             </div>
           </div>
         </div>
         <div className='form-footer'>
           <div className='button-area'>
-            <button type='reset' className='orange'>
+            <button type='reset' className='orange' onClick={handleClickReset}>
               reset
             </button>
 

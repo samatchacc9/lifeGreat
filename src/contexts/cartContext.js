@@ -36,8 +36,8 @@ function CartContextProvider({ children }) {
   //======================================= function เพิ่ม =======================================
 
   const onAdd = (product) => {
-    const idx = cartItems.findIndex((x) => x.id === product.id);
     const newCart = [...cartItems];
+    const idx = newCart.findIndex((x) => x.id === product.id);
     if (idx > -1) {
       newCart[idx] = { ...newCart[idx], qty: newCart[idx].qty + 1 };
     } else {

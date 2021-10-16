@@ -4,6 +4,7 @@ import '../../components/Container/ContainerStartColumn.css';
 import { useHistory, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from '../../config/axios';
+import Swal from 'sweetalert2';
 
 function TableManageCategoryForAdmin() {
   let count = 1;
@@ -34,9 +35,21 @@ function TableManageCategoryForAdmin() {
   // function delete
   const handleClickDelete = async (e, id) => {
     try {
-      console.log(id);
-      await axios.delete(`/category/${id}`);
-      setToggle((c) => !c);
+      Swal.fire({
+        title: 'ต้องการลบหรือไม่',
+        // text: "You won't be logout",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`/category/${id}`);
+          setToggle((c) => !c);
+        }
+      });
+      // console.log(id);
     } catch (err) {
       console.log(err);
     }

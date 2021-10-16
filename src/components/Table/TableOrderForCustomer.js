@@ -54,17 +54,13 @@ function TableOrderForCustomer() {
             <td data-label='วันที่สั่ง'>{new Date(order.orderdate).toDateString()}</td>
 
             <td data-label='สถานะการชำระเงิน'>
-              <font className='pending'>{order.paymentstatus}</font>
+              <font className={`${order.paymentstatus === 'COMPLETED' ? 'completed' : 'pending'}`}>
+                {order.paymentstatus}
+              </font>
             </td>
             <td data-label='ยอดรวม'>
               {order.OrderItems.reduce((acc, product) => +acc + +product.productprice * +product.qty, 0)} ฿
             </td>
-            {/* {order.OrderItems.reduce((acc, product) => +acc + +product.productprice * +product.qty, 0)} */}
-            {/* <td data-label='รายละเอียด'>
-            <a href='#' className='button-table blue'>
-              <i className='fas fa-eye' onClick={handleDetailOrder}></i>
-            </a>
-          </td> */}
           </tr>
         ))}
       </tbody>

@@ -5,6 +5,7 @@ import { AuthContext } from '../../contexts/authContext';
 import imagesUser from '../../images/default-profile-user.png';
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from '../../config/axios';
+import Swal from 'sweetalert2';
 
 function FormCustomerUpdateProfile() {
   // let { user } = useContext(AuthContext);
@@ -54,6 +55,12 @@ function FormCustomerUpdateProfile() {
     }
     axios.put(`/profile/ ${id}`, formData).then((res) => {
       // .put(`/category/${location.state.id}`, { categoryname })
+      Swal.fire({
+        title: 'Success',
+        text: 'Do you want to continue',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
       history.push({ pathname: '/CustomerProfile' });
     });
   };
@@ -62,6 +69,23 @@ function FormCustomerUpdateProfile() {
   const handleChangeFile = (e) => {
     setPicurl(e.target.files[0]);
     setIsUpdatePic(true);
+  };
+
+  const handleClickReset = (e) => {
+    setFirstname('');
+    setLastname('');
+    setDateofbirth('');
+    setPhone('');
+    setEmail('');
+    setGender('');
+    setProvince('');
+    setDistrict('');
+    setSubdistrict('');
+    setHouseno('');
+    setVillage('');
+    setZipcode('');
+    setUsername('');
+    setPassword('');
   };
 
   return (
@@ -229,7 +253,7 @@ function FormCustomerUpdateProfile() {
 
         <div className='form-footer'>
           <div className='button-area'>
-            <button type='reset' className='orange'>
+            <button type='reset' className='orange' onClick={handleClickReset}>
               reset
             </button>
 

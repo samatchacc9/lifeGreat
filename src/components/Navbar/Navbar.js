@@ -10,7 +10,7 @@ import { useHistory } from 'react-router-dom';
 import { removeToken } from '../../services/localStorage';
 import { CartContext } from '../../contexts/cartContext';
 import { SearchContext } from '../../contexts/searchContext';
-
+import Swal from 'sweetalert2';
 function Navbar() {
   // set state ไปรับค่าเพื่อ rerendeใหม่
   const { user, setUser } = useContext(AuthContext);
@@ -49,9 +49,22 @@ function Navbar() {
     // console.log(`title`, title);
     if (title === 'Logout') {
       e.preventDefault(); // a tag
-      removeToken();
-      setUser(null); // update sate
-      history.push('/');
+
+      Swal.fire({
+        title: 'ต้องการออกจากระบบหรือไม่',
+
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push('/');
+          removeToken();
+          setUser(null); // update sate
+        }
+      });
     }
   };
 

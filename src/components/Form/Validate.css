@@ -1,0 +1,9 @@
+.validate {
+  color: rgba(255, 30, 0, 0.959);
+  font-size: 0.8rem;
+  /* display: flex; */
+  /* width: 100%; */
+  /* justify-self: start;
+  position: relative; */
+  bottom: 30px;
+}

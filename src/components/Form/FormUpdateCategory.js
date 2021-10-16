@@ -46,9 +46,9 @@ function FormUpdateCategory() {
         </div>
         <div className='form-footer'>
           <div className='button-area'>
-            <button type='reset' className='orange'>
+            {/* <button type='reset' className='orange'>
               Reset
-            </button>
+            </button> */}
 
             <button type='submit' className='green'>
               Save

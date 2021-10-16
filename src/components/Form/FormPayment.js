@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { CartContext } from '../../contexts/cartContext';
 import axios from '../../config/axios';
 import { OrderContext } from '../../contexts/orderContext';
+import Swal from 'sweetalert2';
 
 function FormPayment() {
   // useContext รวบมาส่ง
@@ -56,6 +57,12 @@ function FormPayment() {
     axios.post('/order', formData).then((res) => {
       setToggleFetch((cur) => !cur);
       setCartItems([]);
+      Swal.fire({
+        title: 'Success',
+        text: 'Do you want to continue',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      });
       history.push({ pathname: '/CustomerOrder' });
     });
   };
