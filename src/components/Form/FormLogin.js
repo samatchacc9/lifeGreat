@@ -48,6 +48,8 @@ function FormLogin() {
       }
 
       if (!isError) {
+
+        // ส่งไป เช็คที่ login
         const res = await axios.post('/login', { username, password });
         setToken(res.data.token);
         setUser(jwtDecode(res.data.token));
